@@ -28,7 +28,8 @@ class ChatSession:
         """
         self.client = client
         self.model = model
-        self.guardrails = guardrails or ["lakera-guard"]
+        # Preserve an explicit empty list (disable guardrails); only default when None
+        self.guardrails = ["lakera-guard"] if guardrails is None else guardrails
         self.messages: List[dict] = []
 
     def add_message(self, role: str, content: str) -> None:
