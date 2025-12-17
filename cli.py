@@ -122,7 +122,8 @@ def chat_command(args: argparse.Namespace) -> int:
     session = ChatSession(
         client=client,
         model=args.model or "gpt-3.5-turbo",
-        guardrails=["lakera-guard"] if not args.no_guardrails else None,
+        # Use empty list to disable guardrails; None would default back to Lakera
+        guardrails=["lakera-guard"] if not args.no_guardrails else [],
     )
 
     # Handle single message or interactive mode
@@ -171,6 +172,8 @@ def chat_command(args: argparse.Namespace) -> int:
         except KeyboardInterrupt:
             print("\n\nGoodbye!")
             return 0
+        # Normal interactive exit
+        return 0
 
 
 def main() -> int:
