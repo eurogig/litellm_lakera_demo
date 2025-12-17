@@ -1,0 +1,20 @@
+model_list:
+  - model_name: gpt-3.5-turbo
+    litellm_params:
+      model: openai/gpt-3.5-turbo
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: gpt-4
+    litellm_params:
+      model: openai/gpt-4
+      api_key: os.environ/OPENAI_API_KEY
+
+guardrails:
+  - guardrail_name: "lakera-guard"
+    litellm_params:
+      guardrail: lakera_v2
+      mode: "pre_call"  # Run before LLM call on input
+      on_flagged: "monitor"  # Default: "block" or "monitor"
+      api_key: os.environ/LAKERA_API_KEY
+      api_base: os.environ/LAKERA_API_BASE  # Optional, defaults to https://api.lakera.ai
+      project_id: os.environ/LAKERA_PROJECT_ID  # Optional, defaults to None
+

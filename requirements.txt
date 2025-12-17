@@ -1,0 +1,9 @@
+requests>=2.31.0
+python-dotenv>=1.0.0
+colorama>=0.4.6
+
+# LiteLLM proxy dependencies (installed separately after litellm from source)
+# These are included when installing litellm[proxy], but since we install from source,
+# we need to ensure proxy extras are available
+# Run: pip install 'litellm[proxy]' after installing litellm from source
+
